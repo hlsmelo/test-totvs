@@ -15,4 +15,4 @@ Após instalar todos os módulos basta executar dois passo:
 * Iniciar a aplicação com o comando: `ng serve`
 * A seguir basta acessar a url `http://localhost:4200/` através do seu navegador de preferência
 
-### Nota: a API foi feita com o servidor json-server e está armazenando frutas
+# Nota: a API foi feita com o servidor json-server e está armazenando frutas
