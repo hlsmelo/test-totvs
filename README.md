@@ -1,27 +1,18 @@
-# Totvs
+# Teste
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
+Este projeto é um desafio pedido por uma empresa.
 
-## Development server
+## Compilação
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Para executar o projeto deve-se instalar todos o modulos através do comando `yarn install` ou `npm install`.
+Qualquer dos comandos deve ser executado no diretório raiz do projeto (onde se encontra o aqruivo package.json)
 
-## Code scaffolding
+## Execução
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Após instalar todos os módulos basta executar dois passo:
 
-## Build
+* Iniciar a API com o comando: `yarn run api` ou `npm run api`
+* Iniciar a aplicação com o comando: `ng serve`
+* A seguir basta acessar a url `http://localhost:4200/` através do seu navegador de preferência
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Nota: a API foi feita com o servidor json-server e está armazenando frutas
