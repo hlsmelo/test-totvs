@@ -1,0 +1,18 @@
+<div id="search-results">
+    <div *ngIf="!haveItems()" class="clean">
+        <img src="../../../assets/search.png" alt="search-no-items-image">
+        <p>Você ainda não realizou nenhuma busca</p>
+    </div>
+    <ul *ngIf="haveItems()">
+        <li *ngFor="let item of foundedItems; index as i">
+            <tot-search-result
+                [idNumber]="i"
+                [title]="item.title"
+                [description]="item.description"
+                [icon]="'../../../assets/result-icon.png'"
+                (onShowModal)="showModal($event)"
+            ></tot-search-result>
+        </li>
+    </ul>
+</div>
+<tot-results-modal [open]="canShowModal" [destination]="modalDestinationUrl"></tot-results-modal>

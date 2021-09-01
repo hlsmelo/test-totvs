@@ -1,0 +1,13 @@
+<div #wrapper id="search">
+    <form method="post">
+        <input #searchField type="text" [value]="searchText" />
+        <button class="submit" (click)="search($event, searchField)">
+            <fa-icon [icon]="faSearch"></fa-icon>
+        </button>
+        <ul *ngIf="haveItems()">
+            <li *ngFor="let item of previewItems">
+                {{item.title}}
+            </li>
+        </ul>
+    </form>
+</div>

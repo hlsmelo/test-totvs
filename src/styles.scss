@@ -1,1 +1,240 @@
-/* You can add global styles to this file, and also import other style files */
+$colorMainButton: #FCDB67;
+$colorBgLight: #FAFAFA;
+$colorFontDeafult: #B5B5B5;
+$colorFontDarkDeafult: #525252;
+
+@mixin _reset {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin _font {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: $colorFontDeafult;
+}
+
+@mixin _buttonFont {
+    color: #FFF;
+    font-size: 30px;
+}
+
+@mixin _borderTop { border-top: 1px solid rgb(0 0 0 / 10%); }
+
+@mixin _borderBottom { border-bottom: 1px solid rgb(0 0 0 / 10%); }
+
+@mixin _shadow { box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 20%); }
+
+body, h1, h2, h3, ul, p { @include _reset(); }
+
+a { text-decoration: none; }
+
+body { color: $colorFontDeafult; }
+
+tot-header {
+    div#header {
+        height: 430px;
+        background: url("./assets/bg1.png") repeat-y;
+        padding-top: 1px;
+        
+        h1#logo {
+            background: url('./assets/logo.png') no-repeat 0 0/100% 100%;
+            mix-blend-mode: lighten;
+            height: 50px;
+            width: 150px;
+            margin: 80px auto 0;
+            font-size: 0;
+        }
+        
+        tot-search {
+            width: 655px;
+            display: block;
+            margin: 80px auto 0;
+            position: relative;
+            
+            input[type="text"],
+            button.submit,
+            ul li {
+                display: inline-block;
+                vertical-align: bottom;
+                height: 70px;
+                text-indent: 30px;
+                border: 0;
+                outline: none;
+                padding: 0;
+            }
+
+            input[type="text"]:focus { background-color: $colorBgLight; }
+
+            input[type="text"] {
+                width: 545px;
+                @include _font();
+            }
+
+            button.submit {
+                width: 110px;
+                text-indent: 0;
+                background-color: $colorMainButton;
+                
+                fa-icon {
+                    @include _buttonFont();
+                }
+            }
+
+            ul {
+                width: 100%;
+                position: absolute;
+                list-style-type: none;
+                z-index: 1;
+                @include _shadow();
+            }
+
+            ul li {
+                width: inherit;
+                background-color: #FFF;
+                height: auto;
+                padding: 21px 0;
+                font-weight: 900;
+                
+                @include _borderTop();
+                @include _font();
+            }
+        }
+        
+        div.wave-bar {
+            background: url('./assets/wave-bar.png') no-repeat 0 0/100% 100%;
+            height: 83px;
+            margin-top: 100px;
+            mix-blend-mode: lighten;
+        }
+    }
+}
+
+tot-search-results {
+    background-color: $colorBgLight;
+    height: 520px;
+    display: block;
+    padding-top: 1px;
+    margin-top: 36px;
+
+    div#search-results {
+        div.clean {
+            margin: 120px auto 0;
+
+            img {
+                display: block;
+                height: 160px;
+                width: 160px;
+                margin: 0 auto;   
+            }
+            
+            p {
+                width: 230px;
+                margin: 30px auto 0;
+                font-size: 24px;
+                text-align: center;
+            }
+        }
+
+        ul {
+            width: 786px;
+            list-style-type: none;
+            margin: 0 auto;
+        }
+
+        tot-search-result {
+            display: block;
+            background-color: #FFF;
+            margin-bottom: 30px;
+            @include _shadow();
+        }
+        
+        tot-search-result .title {
+            padding: 25px;
+            @include _borderBottom();
+            
+            img, h3 {
+                display: inline-block;
+                vertical-align: bottom;
+            }
+    
+            img { width: 150px; }
+            
+            h3 {
+                width: 200px;
+                margin-left: 30px;
+            }
+    
+            a {
+                cursor: default;
+                float: right;
+                color: #7429FF;
+                margin-top: 3px;
+            }
+        }        
+    }
+    
+    tot-search-result .description {
+        padding: 30px 25px;
+
+        p, button {
+            display: inline-block;
+            vertical-align: bottom;
+        }
+
+        p {
+            height: 50px;
+            width: 410px;
+            text-indent: 15px;
+            color: $colorFontDarkDeafult;
+        }
+
+        button {
+            padding: 14px 25px;
+            background-color: $colorMainButton;
+            border: 0;
+            text-transform: uppercase;
+            color: #FFF;
+            font-size: 20px;
+            font-weight: 600;
+            float: right;
+        }            
+    }
+}
+
+tot-results-modal {
+    div#lightbox {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgb(0 0 0 / 50%);
+    }
+
+    div.modal {
+        height: 90px;
+        width: 260px;
+        margin: 280px auto 0;
+        padding: 45px 95px;
+        background-color: #FFF;
+        font-weight: 600;
+    }
+
+    p {
+        margin-bottom: 36px;
+        font-size: 16px;
+    }
+
+    button {
+        background-color: transparent;
+        text-transform: uppercase;
+        font-size: 18px;
+        border: 0;
+        color: #7429FF;
+        outline: none;
+    }
+
+    button:nth-of-type(1) { margin-left: 56px; }
+    button:nth-of-type(2) { margin-left: 50px; }
+}

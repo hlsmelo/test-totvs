@@ -1,0 +1,11 @@
+<div id="search-result">
+    <div class="title">
+        <img [src]="icon" [alt]="title">
+        <h3>{{title}}</h3>
+        <a (click)="toogle()">{{optionText}} detalhe da ação <fa-icon [icon]="optionIcon"></fa-icon> </a>
+    </div>
+    <div *ngIf="open" class="description">
+        <p>{{description}}</p>
+        <button (click)="showModal()">ver mais</button>
+    </div>
+</div>
