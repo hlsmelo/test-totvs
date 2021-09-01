@@ -5,7 +5,7 @@
             <fa-icon [icon]="faSearch"></fa-icon>
         </button>
         <ul *ngIf="haveItems()">
-            <li *ngFor="let item of previewItems">
+            <li *ngFor="let item of previewItems" (click)="search($event, searchField)">
                 {{item.title}}
             </li>
         </ul>

@@ -29,7 +29,10 @@ body, h1, h2, h3, ul, p { @include _reset(); }
 
 a { text-decoration: none; }
 
-body { color: $colorFontDeafult; }
+body {
+    color: $colorFontDeafult;
+    min-width: 640px;
+}
 
 tot-header {
     div#header {
@@ -47,11 +50,12 @@ tot-header {
         }
         
         tot-search {
-            width: 655px;
+            width: 90.4%;
+            max-width: 655px;
             display: block;
             margin: 80px auto 0;
             position: relative;
-            
+
             input[type="text"],
             button.submit,
             ul li {
@@ -67,7 +71,7 @@ tot-header {
             input[type="text"]:focus { background-color: $colorBgLight; }
 
             input[type="text"] {
-                width: 545px;
+                width: calc( 100% - 110px);
                 @include _font();
             }
 
@@ -137,7 +141,8 @@ tot-search-results {
         }
 
         ul {
-            width: 786px;
+            width: 90%;
+            max-width: 786px;
             list-style-type: none;
             margin: 0 auto;
         }

@@ -57,10 +57,13 @@ export class TotSearchComponent implements OnInit, OnDestroy, AfterViewInit {
     this.subscriptions.forEach( (subscription: Subscription) => subscription.unsubscribe() );
   }
 
-  protected clearPreview($event: MouseEvent) {
+  protected clearPreview($event: MouseEvent, force: boolean = false) {
     if (
-      this.previewItems.length === 0 ||
-      (<any>$event).path.includes( (<ElementRef>this.wrapper).nativeElement)
+      ! force &&
+      (
+        ! this.haveItems() ||
+        (<any>$event).path.includes( (<ElementRef>this.wrapper).nativeElement)
+      )
     ) {
       return;
     }
@@ -93,6 +96,7 @@ export class TotSearchComponent implements OnInit, OnDestroy, AfterViewInit {
         }),
     );
 
+    this.clearPreview($event, true);    
     this.router.navigate(['/']);
   }
   
