@@ -16,13 +16,13 @@ export class TotSearchResultsService {
 
     public getResults(find: string): Observable<Object> {
         if (environment.apiUrl === '') {
-            return from(
+            return from([
                 selfApi.fetchItems({
-                db: 'frutas',
-                field: 'title_like',
-                find,
+                    db: 'frutas',
+                    field: 'title_like',
+                    find,
                 }),
-            );
+            ]);
         }
 
         const endpoint: string = environment.apiUrl + find;

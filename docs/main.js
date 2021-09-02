@@ -628,11 +628,13 @@ class TotSearchResultsService {
     }
     getResults(find) {
         if (_web_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl === '') {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])(api_self_api__WEBPACK_IMPORTED_MODULE_1__["selfApi"].fetchItems({
-                db: 'frutas',
-                field: 'title_like',
-                find,
-            }));
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])([
+                api_self_api__WEBPACK_IMPORTED_MODULE_1__["selfApi"].fetchItems({
+                    db: 'frutas',
+                    field: 'title_like',
+                    find,
+                }),
+            ]);
         }
         const endpoint = _web_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl + find;
         return this.http.get(endpoint);
