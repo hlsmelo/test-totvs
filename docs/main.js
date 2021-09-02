@@ -59,23 +59,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 const applicationState = {
     searchText: '',
-    searchItems: [
-        {
-            "id": 1,
-            "title": "morango",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
-        },
-        {
-            "id": 2,
-            "title": "maca",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
-        },
-        {
-            "id": 3,
-            "title": "banana",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
-        },
-    ],
+    searchItems: [],
 };
 
 
