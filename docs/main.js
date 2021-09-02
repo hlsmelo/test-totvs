@@ -59,7 +59,23 @@ __webpack_require__.r(__webpack_exports__);
 ;
 const applicationState = {
     searchText: '',
-    searchItems: [],
+    searchItems: [
+        {
+            "id": 1,
+            "title": "morango",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 2,
+            "title": "maca",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 3,
+            "title": "banana",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+    ],
 };
 
 
@@ -81,8 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 const environment = {
     // production: false,
     production: true,
-    apiUrl: "https://hlsmelo.github.io/test-totvs/api/",
-    searchParam: "?db=frutas&title_like=",
+    apiUrl: "https://hlsmelo.github.io/test-totvs/api/?db=frutas&title_like=",
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -627,7 +642,7 @@ class TotSearchResultsService {
         this.results$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]([]);
     }
     getResults(find) {
-        const endpoint = _web_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl + _web_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].searchParam + find;
+        const endpoint = _web_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl + find;
         return this.http.get(endpoint);
     }
 }

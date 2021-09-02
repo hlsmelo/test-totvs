@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://hlsmelo.github.io/test-totvs/api/",
-  searchParam: "?db=frutas&title_like=",
+  apiUrl: "https://hlsmelo.github.io/test-totvs/api/?db=frutas&title_like=",
 };

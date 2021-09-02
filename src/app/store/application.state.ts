@@ -9,5 +9,5 @@ export interface IRootApplicationState {
   
 export const applicationState: IApplicationState = {
     searchText: '',
-    searchItems: [],
+    searchItems: [ ],
 };
