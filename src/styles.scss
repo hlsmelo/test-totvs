@@ -123,7 +123,7 @@ tot-search-results {
 
     div#search-results {
         margin-top: 16px;
-        
+
         div.clean {
             margin: 120px auto 0;
 
@@ -144,6 +144,7 @@ tot-search-results {
 
         ul {
             width: 90%;
+            min-width: 610px;
             max-width: 786px;
             list-style-type: none;
             margin: 0 auto;
