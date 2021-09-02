@@ -79,10 +79,8 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const environment = {
-    // production: false,
-    production: true,
-    // apiUrl: "https://hlsmelo.github.io/test-totvs/api/?db=frutas&title_like=",
-    apiUrl: "http://localhost:3030/frutas?title_like=",
+    production: false,
+    apiUrl: "",
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -614,9 +612,11 @@ TotSearchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefin
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TotSearchResultsService", function() { return TotSearchResultsService; });
 /* harmony import */ var _web_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @web/environments/environment */ "AytR");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "qCKp");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var api_self_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! api/self-api */ "qNzv");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+
 
 
 
@@ -624,15 +624,22 @@ __webpack_require__.r(__webpack_exports__);
 class TotSearchResultsService {
     constructor(http) {
         this.http = http;
-        this.results$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]([]);
+        this.results$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
     }
     getResults(find) {
+        if (_web_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl === '') {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])(api_self_api__WEBPACK_IMPORTED_MODULE_1__["selfApi"].fetchItems({
+                db: 'frutas',
+                field: 'title_like',
+                find,
+            }));
+        }
         const endpoint = _web_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl + find;
         return this.http.get(endpoint);
     }
 }
-TotSearchResultsService.ɵfac = function TotSearchResultsService_Factory(t) { return new (t || TotSearchResultsService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"])); };
-TotSearchResultsService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ token: TotSearchResultsService, factory: TotSearchResultsService.ɵfac, providedIn: 'root' });
+TotSearchResultsService.ɵfac = function TotSearchResultsService_Factory(t) { return new (t || TotSearchResultsService)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"])); };
+TotSearchResultsService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({ token: TotSearchResultsService, factory: TotSearchResultsService.ɵfac, providedIn: 'root' });
 
 
 /***/ }),
@@ -713,6 +720,129 @@ TotMainModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵdefineInje
         _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"], _ngrx_store__WEBPACK_IMPORTED_MODULE_2__["StoreRootModule"], _web_app_tot_main_routing_module__WEBPACK_IMPORTED_MODULE_4__["TotMainRoutingModule"],
         _web_app_components_tot_header_tot_header_module__WEBPACK_IMPORTED_MODULE_6__["TotHeaderModule"],
         _web_app_navigation_components_tot_search_results_tot_search_results_module__WEBPACK_IMPORTED_MODULE_7__["TotSearchResultsModule"]] }); })();
+
+
+/***/ }),
+
+/***/ "qNzv":
+/*!*************************!*\
+  !*** ./api/self-api.ts ***!
+  \*************************/
+/*! exports provided: selfApi */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selfApi", function() { return selfApi; });
+const resources = {
+    "frutas": [
+        {
+            "id": 1,
+            "title": "morango",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 2,
+            "title": "maca",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 3,
+            "title": "banana",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 4,
+            "title": "pera",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 5,
+            "title": "ameixa",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 6,
+            "title": "pessego",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 7,
+            "title": "amora",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 8,
+            "title": "melancia",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 9,
+            "title": "melao",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 10,
+            "title": "pitaya",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 11,
+            "title": "uva",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 12,
+            "title": "abacaxi",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 13,
+            "title": "mamao",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 14,
+            "title": "kiwi",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        },
+        {
+            "id": 15,
+            "title": "graviola",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+        }
+    ]
+};
+class SelfApi {
+    constructor() {
+    }
+    filter(field, value) {
+        return field === value;
+    }
+    filterLike(field, rx) {
+        return rx.test(field);
+    }
+    processRequest(search) {
+        const collection = resources[search.db];
+        const query = { field: '', value: '' };
+        query.field = search.field;
+        query.value = search.find;
+        if (search.field.indexOf('_like') > -1) {
+            query.field = search.field.split('_')[0];
+            query.value = new RegExp(search.find, 'i');
+        }
+        return collection
+            .filter((item) => {
+            const fieldValue = item[query.field];
+            return this.filter(fieldValue, query.value) ||
+                this.filterLike(fieldValue, query.value);
+        });
+    }
+    fetchItems(search) {
+        return this.processRequest(search);
+    }
+}
+const selfApi = new SelfApi();
 
 
 /***/ }),

@@ -13,17 +13,17 @@ import {
 import { TotResultsModalComponent } from '@web/app/components/tot-results-modal/tot-results-modal.component';
 
 @NgModule({
-  declarations: [
-    TotSearchResultsComponent,
-    TotSearchResultComponent,
-    TotResultsModalComponent,
-  ],
-  imports: [
-    CommonModule,
-    FontAwesomeModule,
-  ],
-  exports: [
-    TotSearchResultsComponent,
-  ],
+    declarations: [
+        TotSearchResultsComponent,
+        TotSearchResultComponent,
+        TotResultsModalComponent,
+    ],
+    imports: [
+        CommonModule,
+        FontAwesomeModule,
+    ],
+    exports: [
+        TotSearchResultsComponent,
+    ],
 })
 export class TotSearchResultsModule { }
