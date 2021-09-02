@@ -1,6 +1,6 @@
 <div #wrapper id="search">
     <form method="post">
-        <input #searchField type="text" [value]="searchText" />
+        <input #searchField type="text" [value]="searchText" placeholder="Digite o nome de uma fruta" />
         <button class="submit" (click)="search($event, searchField)">
             <fa-icon [icon]="faSearch"></fa-icon>
         </button>

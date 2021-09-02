@@ -1,0 +1,182 @@
+<script>
+    const resources = {
+        "frutas": [
+            {
+                "id": 1,
+                "title": "morango",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 2,
+                "title": "graviola",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 3,
+                "title": "banana",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 4,
+                "title": "pera",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 5,
+                "title": "ameixa",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 6,
+                "title": "pessego",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 7,
+                "title": "amora",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 8,
+                "title": "melancia",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 9,
+                "title": "melao",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 10,
+                "title": "pitaya",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 11,
+                "title": "uva",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 12,
+                "title": "abacaxi",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 13,
+                "title": "mamao",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 14,
+                "title": "kiwi",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            },
+            {
+                "id": 15,
+                "title": "abacate",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
+            }
+        ]
+    };
+
+    const Api = function() {
+        if (this === window) {
+            throw 'Error';
+        }
+
+        const obj = this;
+        const _obj = { };
+        
+        _obj.getSearch = function(href) {
+            return ( href.indexOf('?') > -1 ) ? href.split('?')[1] : '';
+        }
+        
+        _obj.getSearchList = function(search) {
+            if (search === '') {
+                return [];
+            }
+
+            return ( search.indexOf('&') > -1 ) ? search.split('&') : [search];
+        }
+        
+        _obj.getSearchPair = function(searchListItem) {
+            const singleItem = [searchListItem, searchListItem];
+
+            return ( searchListItem.indexOf('=') > -1 ) ? searchListItem.split('=') : singleItem;
+        }
+        
+        _obj.getSearchObject = function(searchList) {
+            const params = { };
+
+            searchList.forEach( (searchString) => {
+                const pair = _obj.getSearchPair(searchString);
+
+                params[ pair[0] ] = pair[1];
+            });
+
+            return params;
+        }
+
+        _obj.getSearchParams = function() {
+            const search = _obj.getSearch( location.href );
+            const searchList = _obj.getSearchList( search );
+
+            return _obj.getSearchObject( searchList );
+        }
+
+        _obj.filter = function(field, value) {
+            return field === value;
+        }
+        
+        _obj.filterLike = function(field, rx) {
+            return rx.test(field);
+        }
+        
+        _obj.processRequest = function(params) {
+            const collection = resources[ params['db'] ];
+            let paramKeys = [];
+
+            delete(params['db']);
+
+            paramKeys = Object.keys(params);
+
+            paramKeys
+                .forEach(
+                    (key) => {
+                        if (key.indexOf('_like') > -1) {
+                            const newKey = key.split('_')[0];
+                            
+                            params[newKey] = new RegExp(params[key],'i');
+                            delete(params[key]);
+                        }
+                    },
+                );
+
+            paramKeys = Object.keys(params);
+            
+            const resource = collection
+                .filter(
+                    (item) => {
+                        const field = paramKeys[0];
+                        const fieldValue = item[field];
+                        const value = params[field];
+                        
+                        return _obj.filter(fieldValue, value) ||
+                            _obj.filterLike(fieldValue, value);
+                    },
+                );
+            
+            document.write(JSON.stringify(resource) );
+        }
+
+        const init = function() {
+            const params = _obj.getSearchParams();
+
+            _obj.processRequest(params);
+        }
+        
+        init();
+    }
+
+    const api = new Api();
+</script>

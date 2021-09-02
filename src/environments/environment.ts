@@ -3,8 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: "http://localhost:3030",
+  // production: false,
+  production: true,
+  apiUrl: "https://hlsmelo.github.io/test-totvs-deployed/api/api.html",
+  searchParam: "?db=frutas&title_like=",
 };
 
 /*

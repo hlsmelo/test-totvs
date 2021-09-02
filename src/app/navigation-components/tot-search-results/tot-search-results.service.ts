@@ -14,7 +14,7 @@ export class TotSearchResultsService {
   ) { }
 
   public getResults(find: string): Observable<Object> {
-    const endpoint: string = environment.apiUrl + '/frutas?title_like=' + find;
+    const endpoint: string = environment.apiUrl + environment.searchParam + find;
 
     return this.http.get(endpoint);
   }
