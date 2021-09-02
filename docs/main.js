@@ -81,7 +81,7 @@ __webpack_require__.r(__webpack_exports__);
 const environment = {
     // production: false,
     production: true,
-    apiUrl: "https://hlsmelo.github.io/test-totvs-deployed/api/api.html",
+    apiUrl: "https://hlsmelo.github.io/test-totvs/api/",
     searchParam: "?db=frutas&title_like=",
 };
 /*
@@ -758,7 +758,7 @@ function TotSearchResultsComponent_ul_2_li_1_Template(rf, ctx) { if (rf & 1) {
     const item_r3 = ctx.$implicit;
     const i_r4 = ctx.index;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("idNumber", i_r4)("title", item_r3.title)("description", item_r3.description)("icon", "../../../assets/result-icon.png");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("idNumber", i_r4)("title", item_r3.title)("description", item_r3.description)("icon", "assets/result-icon.png");
 } }
 function TotSearchResultsComponent_ul_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "ul");
@@ -795,7 +795,7 @@ class TotSearchResultsComponent {
     }
 }
 TotSearchResultsComponent.ɵfac = function TotSearchResultsComponent_Factory(t) { return new (t || TotSearchResultsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_web_app_navigation_components_tot_search_results_tot_search_results_service__WEBPACK_IMPORTED_MODULE_1__["TotSearchResultsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"])); };
-TotSearchResultsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: TotSearchResultsComponent, selectors: [["tot-search-results"]], decls: 4, vars: 4, consts: [["id", "search-results"], ["class", "clean", 4, "ngIf"], [4, "ngIf"], [3, "open", "destination"], [1, "clean"], ["src", "../../../assets/search.png", "alt", "search-no-items-image"], [4, "ngFor", "ngForOf"], [3, "idNumber", "title", "description", "icon", "onShowModal"]], template: function TotSearchResultsComponent_Template(rf, ctx) { if (rf & 1) {
+TotSearchResultsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: TotSearchResultsComponent, selectors: [["tot-search-results"]], decls: 4, vars: 4, consts: [["id", "search-results"], ["class", "clean", 4, "ngIf"], [4, "ngIf"], [3, "open", "destination"], [1, "clean"], ["src", "assets/search.png", "alt", "search-no-items-image"], [4, "ngFor", "ngForOf"], [3, "idNumber", "title", "description", "icon", "onShowModal"]], template: function TotSearchResultsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, TotSearchResultsComponent_div_1_Template, 4, 0, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, TotSearchResultsComponent_ul_2_Template, 2, 1, "ul", 2);
